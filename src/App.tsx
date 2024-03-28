@@ -85,11 +85,15 @@ export default function MyCheckbox() {
             </div>
           )}
           {todos.map((todo) => (
-            <div key={todo.id} className="flex flex-row justify-between my-2">
+            <div
+              key={todo.id}
+              className="flex flex-row justify-between my-2  bg-gray-800 p-2  rounded-lg"
+            >
               <div className="flex flex-row">
                 {editTodoId === todo.id ? (
                   <>
                     <Input
+                      className="text-black mr-2"
                       value={editTodoValue}
                       onChange={(e) => setEditTodoValue(e.target.value)}
                     />
@@ -101,11 +105,15 @@ export default function MyCheckbox() {
                       type="checkbox"
                       name={todo.id}
                       onChange={handleCheckbox}
-                      className="mr-2"
+                      className="mx-2"
                       checked={todo.isCompleted}
                     />
                     <div
-                      className={todo.isCompleted ? "line-through" : ""}
+                      className={
+                        todo.isCompleted
+                          ? "line-through text-xl pt-1 pl-2 font-semibold"
+                          : "text-xl pt-1 pl-2 font-semibold"
+                      }
                       onClick={() => handleEdit(todo)}
                     >
                       {todo.todo}
