@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function MyCheckbox() {
   interface Todo {
@@ -18,11 +18,13 @@ export default function MyCheckbox() {
   const [editTodoValue, setEditTodoValue] = useState<string>("");
 
   const handleAdd = () => {
-    setTodos([
-      ...todos,
-      { id: uuidv4(), todo: inputValue, isCompleted: false },
-    ]);
-    setInputValue("");
+    if (inputValue.trim() !== "") {
+      setTodos([
+        ...todos,
+        { id: uuidv4(), todo: inputValue, isCompleted: false },
+      ]);
+      setInputValue("");
+    }
   };
 
   const handleChange = (e) => {
@@ -63,11 +65,16 @@ export default function MyCheckbox() {
       <div className="w-2/3 mx-auto my-20 bg-gray-900 p-5 rounded-lg text-white">
         <div className="flex flex-row">
           <Input
-            onChange={handleChange}
-            value={inputValue}
-            className="rounded-r-none border-4 border-[#cd1c45] text-black"
-            type="text"
-            placeholder="Add a new Item"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleAdd();
+                }
+              }}
+              onChange={handleChange}
+              value={inputValue}
+              className="rounded-r-none border-4 border-[#cd1c45] text-black"
+              type="text"
+              placeholder="Add a new Item"
           />
           <Button onClick={handleAdd} className="rounded-l-none">
             Add
