@@ -7,22 +7,25 @@ export default function Home() {
     <div className="bg-black min-h-screen ">
       <Navbar />
       <div className="grid grid-cols-2">
-        <div className="text-left mx-16 text-white text-6xl flex flex-col justify-center min-h-screen">
+        <div className="text-left mx-16  text-6xl text-white font-bold flex flex-col justify-center min-h-screen">
+            <div>
+              <h2 className="font-bold text-white text-left text-6xl">We are here to help with your</h2>
+            </div>
           <TypeAnimation
             preRenderFirstString={true}
             sequence={[
-              "We are here to help with your Work", // Types 'One'
+              " Work", // Types 'One'
               1000, // Waits 1s
-              "We are here to help with your Studies", // Deletes 'One' and types 'Two'
+              " Studies", // Deletes 'One' and types 'Two'
               2000, // Waits 2s
-              "We are here to help with your Life", // Types 'Three' without deleting 'Two'
+              " Life", // Types 'Three' without deleting 'Two'
               () => {
                 console.log("Sequence completed");
               },
             ]}
-            className="text-left text-6xl"
+            className="text-left text-6xl text-pink-700 font-black"
             wrapper="h2"
-            cursor={false}
+            cursor={true}
             repeat={Infinity}
           />{" "}
           lists

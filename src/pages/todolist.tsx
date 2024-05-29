@@ -31,7 +31,7 @@ export default function MyCheckbox() {
     setInputValue(e.target.value);
   };
 
-  const handleCheckbox = (e) => {
+  conzst handleCheckbox = (e) => {
     let id = e.target.name;
     let index = todos.findIndex((item) => {
       return item.id === id;
